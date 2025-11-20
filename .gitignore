@@ -33,6 +33,7 @@ Intermediates/
 *.exe
 
 # Files built by Visual Studio
+*.user
 *_i.c
 *_p.c
 *_h.h
