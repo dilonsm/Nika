@@ -12,7 +12,7 @@ namespace Nika
 	{
 	}
 
-	void NikaApp::Run()
+	void NikaApp::run()
 	{
 		printf("Hello!\n");
 	}

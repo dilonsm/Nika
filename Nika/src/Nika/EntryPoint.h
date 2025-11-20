@@ -4,12 +4,12 @@
 
 #include "NikaApp.h"
 
-extern Nika::NikaApp* Nika::CreateApplication();
+extern Nika::NikaApp* Nika::createApplication();
 
 int main(int argc, char** argv)
 {
-	auto app = Nika::CreateApplication();
-	app->Run();
+	auto app = Nika::createApplication();
+	app->run();
 	delete app;
 }
 

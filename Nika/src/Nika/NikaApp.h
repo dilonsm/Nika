@@ -10,12 +10,12 @@ namespace Nika
 		NikaApp();
 		virtual ~NikaApp();
 
-		void Run();
+		void run();
 
 	private:
 
 	};
 
-	NikaApp* CreateApplication();
+	NikaApp* createApplication();
 }
 

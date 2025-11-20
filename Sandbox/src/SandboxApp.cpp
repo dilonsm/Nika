@@ -15,7 +15,7 @@ private:
 
 };
 
-Nika::NikaApp* Nika::CreateApplication()
+Nika::NikaApp* Nika::createApplication()
 {
 	return new Sandbox();
 }
