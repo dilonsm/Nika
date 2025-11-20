@@ -1,0 +1,3 @@
+[submodule "Nika/vendor/spdlog"]
+	path = Nika/vendor/spdlog
+	url = https://github.com/gabime/spdlog
