@@ -2,7 +2,6 @@
 
 #ifdef NIKA_WIN32
 
-#include "NikaApp.h"
 
 extern Nika::NikaApp* Nika::createApplication();
 
