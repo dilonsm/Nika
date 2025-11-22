@@ -1,7 +1,5 @@
 #include "NikaApp.h"
 
-#include <stdio.h>
-
 namespace Nika
 {
 	NikaApp::NikaApp()
@@ -14,7 +12,7 @@ namespace Nika
 
 	void NikaApp::run()
 	{
-		printf("Hello!\n");
+		while (true);
 	}
 }
 

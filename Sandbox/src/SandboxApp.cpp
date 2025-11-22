@@ -1,4 +1,4 @@
-#include "src/stdafx.h"
+#include "Nika.h"
 
 class Sandbox : public Nika::NikaApp
 {
