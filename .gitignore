@@ -5,6 +5,11 @@ Intermediates/
 
 # Visual Studio
 .vs/
+**.sln
+**.vcxproj
+**.vcxproj.filters
+**.vcxproj.user
+**.csproj
 
 # Object | Temp Files
 *.o
@@ -33,7 +38,6 @@ Intermediates/
 *.exe
 
 # Files built by Visual Studio
-*.user
 *_i.c
 *_p.c
 *_h.h
@@ -47,7 +51,6 @@ Intermediates/
 *.tlh
 *.tmp
 *.tmp_proj
-*_wpftmp.csproj
 *.log
 *.tlog
 *.vspscc
@@ -61,12 +64,12 @@ Intermediates/
 ipch/
 *.aps
 *.ncb
+*.sdf
 *.opendb
 *.opensdf
-*.sdf
 *.cachefile
-*.VC.db
 *.VC.VC.opendb
+*.VC.db
 
 # Visual Studio Profiler & Trace Files
 *.psess
