@@ -1,4 +1,5 @@
 #include "Nika.h"
+#include "Nika/EntryPoint.h"
 
 class Sandbox : public Nika::NikaApp
 {

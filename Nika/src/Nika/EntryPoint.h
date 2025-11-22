@@ -2,11 +2,6 @@
 
 #ifdef NIKA_WIN32
 
-// ---  i don't want to include this here   ---
-#include "Log.h"
-#include "NikaApp.h"
-// --- but Sandbox won't compile without it --- 
-
 extern Nika::NikaApp* Nika::createApplication();
 
 int main(int argc, char** argv)
