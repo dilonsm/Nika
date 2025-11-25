@@ -26,10 +26,12 @@ namespace Nika
 		EventCategoryMouseButton = BIT(4)
 	};
 
+// --- macro defining static type, virtual type, and name for an event class ---
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
 
+// --- macro defining category flags for an event class ---
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class NIKA_API Event
@@ -51,7 +53,6 @@ namespace Nika
 		bool m_Handled = false;
 	};
 
-
 	class EventDispatcher
 	{
 		template<typename T>
@@ -59,14 +60,15 @@ namespace Nika
 
 	public:
 		EventDispatcher(Event& event)
-			: m_Event(event) { }
+			: m_Event(event) {
+		}
 
 		template<typename T>
 		bool Dispatch(EventFn<T> func)
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(*(T*)(&m_Event));
+				m_Event.Handled = func(*(T*)(&m_Event)); 
 				return true;
 			}
 			return false;

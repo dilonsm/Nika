@@ -4,6 +4,8 @@
 
 extern Nika::NikaApp* Nika::createApplication();
 
+// ==================================================
+// ==== Entry Point ================
 int main(int argc, char** argv)
 {
 	Nika::Log::init();
@@ -14,6 +16,8 @@ int main(int argc, char** argv)
 	app->run();
 	delete app;
 }
+// =================================
+// ==================================================
 
 #endif
 
