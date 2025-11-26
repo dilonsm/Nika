@@ -20,8 +20,8 @@ project "Nika"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
-	pchheader "nikapch.h"
-	pchsource "Nika/src/nikapch.cpp"
+	pchheader "nkpch.h"
+	pchsource "Nika/src/nkpch.cpp"
 
 	files
 	{
