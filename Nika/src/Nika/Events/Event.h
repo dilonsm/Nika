@@ -1,9 +1,8 @@
 #pragma once
 
-#include "../Core.h"
+#include "nkpch.h"
 
-#include <string>
-#include <functional>
+#include "Nika/Core.h"
 
 namespace Nika
 {
@@ -26,8 +25,8 @@ namespace Nika
 		EventCategoryMouseButton = BIT(4)
 	};
 
-// --- macro defining static type, virtual type, and name for an event class ---
-#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
+	// --- macro defining static type, virtual type, and name for an event class ---
+#define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
 
@@ -44,7 +43,7 @@ namespace Nika
 		virtual int GetCategoryFlags() const = 0;
 		virtual std::string ToString() const { return GetName(); }
 
-		bool IsInCategory(EventCategory category)
+		inline bool IsInCategory(EventCategory category)
 		{
 			return GetCategoryFlags() & category;
 		}
@@ -56,7 +55,7 @@ namespace Nika
 	class EventDispatcher
 	{
 		template<typename T>
-		using EventFn = std::function<bool(T&)>
+		using EventFn = std::function<bool(T&)>;
 
 	public:
 		EventDispatcher(Event& event)
@@ -68,7 +67,7 @@ namespace Nika
 		{
 			if (m_Event.GetEventType() == T::GetStaticType())
 			{
-				m_Event.Handled = func(*(T*)(&m_Event)); 
+				m_Event.m_Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;
