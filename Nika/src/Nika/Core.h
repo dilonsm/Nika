@@ -7,6 +7,8 @@
 	#else
 		#define NIKA_API __declspec(dllimport)
 	#endif
+#else
+	#error "Windows only!"
 #endif
 
 // --- macro to shift through bitfields ---

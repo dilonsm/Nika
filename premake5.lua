@@ -31,7 +31,8 @@ project "Nika"
 
 	includedirs
 	{
-		"Nika/vendor/spdlog/include"
+		"%{prj.name}/src",
+		"%{prj.name}/vendor/spdlog/include"
 	}
 
 	filter "system:windows"
@@ -83,8 +84,8 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Nika/vendor/spdlog/include",
-		"Nika/src"
+		"Nika/src",
+		"Nika/vendor/spdlog/include"
 	}
 
 	links
