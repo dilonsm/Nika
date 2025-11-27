@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Nika
 {
 	class NIKA_API MouseMovedEvent : public Event
