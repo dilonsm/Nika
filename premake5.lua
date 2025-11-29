@@ -1,14 +1,19 @@
 workspace "Nika"
 	architecture "x86"
+	startproject "Sandbox"
 
 	configurations
 	{
 		"Debug",
-		"Release",
-		"Dist"
+		"Release"
 	}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+IncludeDir = {}
+IncludeDir["GLFW"] = "Nika/vendor/GLFW/include"
+
+include "Nika/vendor/GLFW"
 
 
 -- ENGINE SETTINGS --
@@ -31,8 +36,15 @@ project "Nika"
 
 	includedirs
 	{
-		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/src", -- src
+		"%{prj.name}/vendor/spdlog/include", -- spdlog
+		"%{IncludeDir.GLFW}" -- GLFW
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -60,10 +72,6 @@ project "Nika"
 
 	filter "configurations:Release"
 		defines "NIKA_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "NIKA_DIST"
 		optimize "On"
 
 
@@ -112,9 +120,5 @@ project "Sandbox"
 
 	filter "configurations:Release"
 		defines "NIKA_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "NIKA_DIST"
 		optimize "On"
 
