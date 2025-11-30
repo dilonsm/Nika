@@ -1,8 +1,8 @@
 #include "nkpch.h"
-
-#include "Events/ApplicationEvent.h"
 #include "NikaApp.h"
+
 #include "Log.h"
+#include "Events/ApplicationEvent.h"
 
 namespace Nika
 {
@@ -19,7 +19,7 @@ namespace Nika
 		WindowResizeEvent event(1280, 720);
 		if (event.IsInCategory(EventCategoryApplication))
 		{
-			NIKA_TRACE("{}", event);
+			NIKA_TRACE("ahhh that's why.. [{}]", event.ToString());
 		}
 	}
 }
