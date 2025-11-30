@@ -1,5 +1,4 @@
 #include "nkpch.h"
-
 #include "Log.h"
 
 namespace Nika

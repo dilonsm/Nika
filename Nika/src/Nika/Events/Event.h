@@ -2,7 +2,7 @@
 
 #include "nkpch.h"
 
-#include "Nika/Core.h"
+#include "Nika/Core/Base.h"
 
 namespace Nika
 {
@@ -25,7 +25,7 @@ namespace Nika
 		EventCategoryMouseButton = BIT(4)
 	};
 
-	// --- macro defining static type, virtual type, and name for an event class ---
+// --- macro defining static type, virtual type, and name for an event class ---
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::##type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }

@@ -2,8 +2,8 @@
 
 // include files for sandbox
 
-#include "Nika/NikaApp.h"
-#include "Nika/Log.h"
+#include "Nika/Core/NikaApp.h"
+#include "Nika/Core/Log.h"
 
-#include "Nika/EntryPoint.h"
+#include "Nika/Core/EntryPoint.h"
 
