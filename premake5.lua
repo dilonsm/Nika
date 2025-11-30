@@ -11,7 +11,7 @@ workspace "Nika"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "Nika/vendor/GLFW/include"
+IncludeDir["GLFW"] = "%{wks.location}/Nika/vendor/GLFW/include"
 
 include "Nika/vendor/GLFW"
 
@@ -44,12 +44,13 @@ project "Nika"
 	links
 	{
 		"GLFW",
-		"opengl32.lib"
+		"opengl32.lib",
+		"dwmapi.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "On"
+		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -69,10 +70,12 @@ project "Nika"
 	filter "configurations:Debug"
 		defines "NIKA_DEBUG"
 		symbols "On"
+		runtime "Debug"
 
 	filter "configurations:Release"
 		defines "NIKA_RELEASE"
 		optimize "On"
+		runtime "Release"
 
 
 -- SANDBOX SETTINGS --
@@ -93,7 +96,8 @@ project "Sandbox"
 	includedirs
 	{
 		"Nika/src",
-		"Nika/vendor/spdlog/include"
+		"Nika/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}" -- GLFW
 	}
 
 	links
@@ -103,7 +107,7 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++20"
-		staticruntime "On"
+		staticruntime "Off"
 		systemversion "latest"
 
 		defines
@@ -117,8 +121,10 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "NIKA_DEBUG"
 		symbols "On"
+		runtime "Debug"
 
 	filter "configurations:Release"
 		defines "NIKA_RELEASE"
 		optimize "On"
+		runtime "Release"
 
