@@ -17,3 +17,12 @@
 	#include <Windows.h>
 #endif
 
+// --- core includes ---
+#include "Nika/Core/Base.h"
+#include "Nika/Core/Log.h"
+
+// --- event includes ---
+#include "Nika/Events/ApplicationEvent.h"
+#include "Nika/Events/MouseEvent.h"
+#include "Nika/Events/KeyEvent.h"
+
