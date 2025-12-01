@@ -19,8 +19,16 @@ namespace Nika
 	{
 		while (m_Running)
 		{
-			glClearColor(2, 0, 0, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+			glClearColor(2, 0, 0, 1);
+
+			// my first triangle :D
+			glBegin(GL_TRIANGLES);
+			glVertex2f(-.5f, -.5f);
+			glVertex2f( .0f,  .5f);
+			glVertex2f( .5f, -.5f);
+			glEnd();
+
 			m_Window->onUpdate();
 		}
 	}
