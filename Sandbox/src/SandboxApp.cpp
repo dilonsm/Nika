@@ -1,5 +1,4 @@
 #include "nkpch.h"
-
 #include "Nika.h"
 
 class Sandbox : public Nika::NikaApp

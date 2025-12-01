@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Nika/Core/Base.h"
 #include "Nika/Events/Event.h"
 
 #include <GLFW/glfw3.h>

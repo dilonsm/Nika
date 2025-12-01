@@ -2,8 +2,6 @@
 
 #include "nkpch.h"
 
-#include "Nika/Core/Base.h"
-
 namespace Nika
 {
 	enum class EventType

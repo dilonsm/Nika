@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Nika/Core/Base.h"
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 
