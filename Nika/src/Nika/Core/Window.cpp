@@ -52,8 +52,8 @@ namespace Nika
 
 	void Window::onUpdate()
 	{
-		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
+		glfwPollEvents();
 	}
 
 	void Window::setVSync(bool enabled)
