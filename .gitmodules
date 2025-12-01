@@ -4,4 +4,4 @@
 [submodule "Nika/vendor/GLFW"]
 	path = Nika/vendor/GLFW
 	url = git@github.com:glfw/glfw.git
-	ingore = dirty
+	ignore = dirty
