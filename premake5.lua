@@ -11,9 +11,9 @@ workspace "Nika"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
-IncludeDir["GLFW"] = "%{wks.location}/Nika/vendor/GLFW/include"
+IncludeDir["raylib"] = "%{wks.location}/Nika/vendor/raylib/src"
 
-include "Nika/vendor/GLFW"
+include "Nika/vendor/raylib"
 
 
 -- ENGINE SETTINGS --
@@ -38,14 +38,12 @@ project "Nika"
 	{
 		"%{prj.name}/src", -- src
 		"%{prj.name}/vendor/spdlog/include", -- spdlog
-		"%{IncludeDir.GLFW}" -- GLFW
+		"%{IncludeDir.raylib}" -- raylib
 	}
 
 	links
 	{
-		"GLFW",
-		"opengl32.lib",
-		"dwmapi.lib"
+		"raylib"
 	}
 
 	filter "system:windows"
@@ -95,9 +93,9 @@ project "Sandbox"
 
 	includedirs
 	{
-		"Nika/src",
-		"Nika/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}" -- GLFW
+		"Nika/src", -- src
+		"Nika/vendor/spdlog/include", -- spdlog
+		"%{IncludeDir.raylib}" -- raylib
 	}
 
 	links
