@@ -1,3 +1,6 @@
 [submodule "Nika/vendor/spdlog"]
 	path = Nika/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "Nika/vendor/raylib"]
+	path = Nika/vendor/raylib
+	url = https://github.com/raysan5/raylib.git
