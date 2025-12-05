@@ -2,8 +2,6 @@
 
 #include "Nika/Events/Event.h"
 
-#include <GLFW/glfw3.h>
-
 namespace Nika
 {
 	struct WindowProps
