@@ -4,3 +4,4 @@
 [submodule "Nika/vendor/raylib"]
 	path = Nika/vendor/raylib
 	url = https://github.com/raysan5/raylib.git
+	ignore = dirty
