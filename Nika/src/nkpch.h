@@ -1,5 +1,11 @@
 #pragma once
 
+// --- defines for conflicts between raylib and windows header files ---
+#define WIN32_LEAN_AND_MEAN
+#define NOGDI
+#define NOUSER
+#define NOMINMAX
+
 #include <memory>
 #include <utility>
 #include <algorithm>
