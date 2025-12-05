@@ -1,8 +1,6 @@
 #include "nkpch.h"
 #include "NikaApp.h"
 
-#include "Nika/Core/Log.h"
-
 #define BIND_EVENT(x) std::bind(&x, this, std::placeholders::_1)
 
 namespace Nika
@@ -30,7 +28,7 @@ namespace Nika
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT(NikaApp::onWindowClose));
 
-		NIKA_TRACE("{0}", e.ToString());
+		NIKA_INFO("{0}", e.ToString());
 	}
 
 	bool NikaApp::onWindowClose(WindowCloseEvent& e)
