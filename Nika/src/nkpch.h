@@ -13,10 +13,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-#ifdef NIKA_WIN32
-	#include <Windows.h>
-#endif
-
 // --- core includes ---
 #include "Nika/Core/Base.h"
 #include "Nika/Core/Log.h"
