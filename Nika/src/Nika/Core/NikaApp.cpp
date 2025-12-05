@@ -1,6 +1,8 @@
 #include "nkpch.h"
 #include "NikaApp.h"
 
+#include "Nika/Core/Log.h"
+
 #define BIND_EVENT(x) std::bind(&x, this, std::placeholders::_1)
 
 namespace Nika
@@ -19,16 +21,6 @@ namespace Nika
 	{
 		while (m_Running)
 		{
-			glClear(GL_COLOR_BUFFER_BIT);
-			glClearColor(2, 0, 0, 1);
-
-			// my first triangle :D
-			glBegin(GL_TRIANGLES);
-			glVertex2f(-.5f, -.5f);
-			glVertex2f( .0f,  .5f);
-			glVertex2f( .5f, -.5f);
-			glEnd();
-
 			m_Window->onUpdate();
 		}
 	}
