@@ -7,10 +7,10 @@ namespace Nika
 	enum class EventType
 	{
 		None = 0,
-		WindowClose, WindowResize, WindowFocus, WindowLostFocus, WindowMoved,
-		AppTick, AppUpdate, AppRender,
+		WindowResize, WindowClose,
+		AppUpdate,
 		KeyPressed, KeyReleased,
-		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
+		MouseMoved, MouseScrolled, MouseButtonPressed, MouseButtonReleased
 	};
 
 	enum EventCategory
@@ -31,6 +31,7 @@ namespace Nika
 // --- macro defining category flags for an event class ---
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
+	// --- main event class ---
 	class NIKA_API Event
 	{
 		friend class EventDispatcher;
@@ -50,6 +51,7 @@ namespace Nika
 		bool m_Handled = false;
 	};
 
+	// --- event friend class ---
 	class EventDispatcher
 	{
 		template<typename T>

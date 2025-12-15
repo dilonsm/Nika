@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Nika/Core/Window.h"
-#include "Nika/Events/Event.h"
 #include "Nika/Events/ApplicationEvent.h"
 
 namespace Nika
