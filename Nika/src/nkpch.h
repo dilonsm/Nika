@@ -6,6 +6,7 @@
 #define NOUSER
 #define NOMINMAX
 
+// --- standard includes ---
 #include <memory>
 #include <utility>
 #include <algorithm>

@@ -1,6 +1,7 @@
 #include "nkpch.h"
 #include "NikaApp.h"
 
+// --- macro to bind member functions to event dispatcher format ---
 #define BIND_EVENT(x) std::bind(&x, this, std::placeholders::_1)
 
 namespace Nika

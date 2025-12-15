@@ -8,7 +8,7 @@ namespace Nika
 
 	void Log::init()
 	{
-		spdlog::set_pattern("%^[%T] %n: %v%$");
+		spdlog::set_pattern("%^ [%T] %n: %v %$");
 
 		s_CoreLogger = spdlog::stdout_color_mt("NIKA");
 		s_CoreLogger->set_level(spdlog::level::trace);
@@ -17,4 +17,14 @@ namespace Nika
 		s_ClientLogger->set_level(spdlog::level::trace);
 	}
 }
+
+// -------------------------------------------------
+// --- meaning of pattern flags in set_pattern() ---
+// -------------------------------------------------
+// ~ %^ -> start color range
+// ~ %T -> time format (HH:MM:SS)
+// ~ %n -> logger name
+// ~ %v -> the actual text to log
+// ~ %$ -> end color range
+// -------------------------------------------------
 
