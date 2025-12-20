@@ -5,7 +5,7 @@
 
 namespace Nika
 {
-	static bool s_WindowInitialized = false;
+	static bool s_WindowInitialized = false; // false by default to ensure only one window initialization
 
 	WindowBase* WindowBase::createWin(const WindowProps& props)
 	{
@@ -23,6 +23,8 @@ namespace Nika
 
 	void Window::init(const WindowProps& props)
 	{
+		SetConfigFlags(FLAG_WINDOW_RESIZABLE); // config flag for resizable window
+
 		m_Data.Title  = props.Title;
 		m_Data.Width  = props.Width;
 		m_Data.Height = props.Height;
@@ -30,27 +32,30 @@ namespace Nika
 		if (!s_WindowInitialized)
 		{
 			InitWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str());
-			SetTargetFPS(60);
+			setVSync(true);
 
 			NIKA_INFO("Created Window [{0}]: [{1}], [{2}]", props.Title, props.Width, props.Height);
 
 			s_WindowInitialized = true;
-			setVSync(true);
 		}
 		else
 			NIKA_ERROR("Window initialization failed!");
 	}
 
-	void Window::onUpdate()
+	void Window::onUpdate(float dt)
 	{
-		BeginDrawing();
-
-		ClearBackground(RED);
-
-		EndDrawing();
+		Vector2 mousePos = GetMousePosition();
 
 		m_Data.Width  = GetScreenWidth();
 		m_Data.Height = GetScreenHeight();
+
+		// --- draw begin ---
+		BeginDrawing();
+
+			ClearBackground(RED);
+
+		EndDrawing();
+		// --- draw end ---
 
 		shutdown();
 	}
@@ -74,6 +79,8 @@ namespace Nika
 	{
 		if (WindowShouldClose())
 		{
+			CloseWindow();
+
 			WindowCloseEvent event;
 			m_Data.EventCallback(event);
 		}
