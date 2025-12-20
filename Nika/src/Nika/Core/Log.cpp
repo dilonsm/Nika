@@ -6,7 +6,7 @@ namespace Nika
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
 
-	void Log::init()
+	void Log::initLog()
 	{
 		spdlog::set_pattern("%^ [%T] %n: %v %$");
 

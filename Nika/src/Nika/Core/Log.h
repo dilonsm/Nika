@@ -8,7 +8,7 @@ namespace Nika
 	class NIKA_API Log
 	{
 	public:
-		static void init();
+		static void initLog();
 
 		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_CoreLogger; }
 		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_ClientLogger; }

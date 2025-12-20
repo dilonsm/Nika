@@ -2,6 +2,8 @@
 
 #include "WindowBase.h"
 
+#include "Nika/Events/ApplicationEvent.h"
+
 namespace Nika
 {
 	class Window : public WindowBase

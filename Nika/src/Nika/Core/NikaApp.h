@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Nika/Core/Window.h"
+#include "Nika/Window/Window.h"
 #include "Nika/Events/ApplicationEvent.h"
 
 namespace Nika
@@ -16,6 +16,8 @@ namespace Nika
 		void onEvent(Event& e);
 
 	private:
+		void initApp();
+
 		bool onWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<WindowBase> m_Window;
