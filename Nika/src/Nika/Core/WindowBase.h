@@ -25,7 +25,7 @@ namespace Nika
 
 		virtual ~WindowBase() = default;
 
-		virtual void onUpdate() = 0;
+		virtual void onUpdate(float dt) = 0;
 
 		virtual uint32_t getWidth() const = 0;
 		virtual uint32_t getHeight() const = 0;
