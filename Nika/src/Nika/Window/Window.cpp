@@ -1,6 +1,8 @@
 #include "nkpch.h"
 #include "Window.h"
 
+#include "Nika/Renderer/Renderer.h"
+
 #include <raylib.h>
 
 namespace Nika
@@ -42,21 +44,16 @@ namespace Nika
 			NIKA_ERROR("Window initialization failed!");
 	}
 
-	void Window::onUpdate(float dt)
+	void Window::winUpdate(float dt)
 	{
-		Vector2 mousePos = GetMousePosition();
+		// camera creation and update
+		Camera camera;
+		camera.camUpdate(dt);
 
-		m_Data.Width  = GetScreenWidth();
-		m_Data.Height = GetScreenHeight();
+		// renderer update
+		Renderer::renderUpdate(camera);
 
-		// --- draw begin ---
-		BeginDrawing();
-
-			ClearBackground(RED);
-
-		EndDrawing();
-		// --- draw end ---
-
+		// end of program
 		shutdown();
 	}
 
