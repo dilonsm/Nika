@@ -7,15 +7,17 @@ extern Nika::NikaApp* Nika::createApplication();
 // ---- Entry Point ---------------------------------
 int main(int argc, char** argv)
 {
-	Nika::Log::init();
+	Nika::Log::initLog();
 
 	NIKA_TRACE("This is exhausting..");
 
 	auto app = Nika::createApplication();
 	app->run();
 	delete app;
+
+	return 0;
 }
 // --------------------------------------------------
 
-#endif
+#endif // NIKA_WIN32
 

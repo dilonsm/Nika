@@ -1,6 +1,8 @@
 #include "nkpch.h"
 #include "NikaApp.h"
 
+#include <raylib.h>
+
 // --- macro to bind member functions to event dispatcher format ---
 #define BIND_EVENT(x) std::bind(&x, this, std::placeholders::_1)
 
@@ -18,10 +20,18 @@ namespace Nika
 
 	void NikaApp::run()
 	{
+		// initApp();
+
 		while (m_Running)
 		{
-			m_Window->onUpdate();
+			float deltaTime = GetFrameTime(); // returns time in seconds
+
+			m_Window->winUpdate(deltaTime);
 		}
+	}
+
+	void NikaApp::initApp()
+	{
 	}
 
 	void NikaApp::onEvent(Event& e)

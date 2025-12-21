@@ -12,7 +12,7 @@ namespace Nika
 		Window(const WindowProps& props);
 		virtual ~Window();
 
-		void onUpdate(float dt) override;
+		void winUpdate(float dt) override;
 
 		uint32_t getWidth() const override { return m_Data.Width; }
 		uint32_t getHeight() const override { return m_Data.Height; }

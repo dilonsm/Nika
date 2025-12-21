@@ -18,14 +18,14 @@ namespace Nika
 		}
 	};
 
-	class NIKA_API WindowBase
+	class WindowBase
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;
 
 		virtual ~WindowBase() = default;
 
-		virtual void onUpdate(float dt) = 0;
+		virtual void winUpdate(float dt) = 0;
 
 		virtual uint32_t getWidth() const = 0;
 		virtual uint32_t getHeight() const = 0;
