@@ -71,7 +71,7 @@ project "Nika"
 		runtime "Debug"
 
 	filter "configurations:Release"
-		defines "NIKA_RELEASE"
+		defines { "NIKA_RELEASE", "LOGGING_OFF" }
 		optimize "On"
 		runtime "Release"
 
@@ -122,7 +122,7 @@ project "Sandbox"
 		runtime "Debug"
 
 	filter "configurations:Release"
-		defines "NIKA_RELEASE"
+		defines { "NIKA_RELEASE", "LOGGING_OFF" }
 		optimize "On"
 		runtime "Release"
 
