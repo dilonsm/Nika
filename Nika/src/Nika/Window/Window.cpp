@@ -24,8 +24,6 @@ namespace Nika
 
 	void Window::init(const WindowProps& props)
 	{
-		SetConfigFlags(FLAG_WINDOW_RESIZABLE); // config flag for resizable window
-
 		m_Data.Title  = props.Title;
 		m_Data.Width  = props.Width;
 		m_Data.Height = props.Height;
@@ -96,18 +94,22 @@ namespace Nika
 
 	void Window::toggleWindowScreen()
 	{
-		static bool fullOff = true;
 		if (IsKeyPressed(KEY_F11))
 		{
-			if (fullOff)
+			if (!IsWindowFullscreen())
 			{
+				int monitor = GetCurrentMonitor();
+				m_Data.Width  = GetScreenWidth();
+				m_Data.Height = GetScreenHeight();
+
+				SetWindowSize(GetMonitorWidth(monitor), GetMonitorHeight(monitor));
 				ToggleFullscreen();
-				fullOff = false;
 			}
 			else
-				RestoreWindow();
-
-			fullOff = true;
+			{
+				ToggleFullscreen();
+				SetWindowSize(m_Data.Width, m_Data.Height);
+			}
 		}
 	}
 
