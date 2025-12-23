@@ -1,19 +1,19 @@
 #pragma once
 
 #include "Camera.h"
+#include "GUI.h"
 
 namespace Nika
 {
 	class Renderer
 	{
 	public:
-		static void renderUpdate(Camera& camera);
+		void renderUpdate(Camera& camera);
 
 	private:
-		static void beginScene(Camera& camera);
-		static void endScene();
-		static void drawScene();
+		void drawScene();
 
+		GUI m_Gui;
 	};
 }
 
