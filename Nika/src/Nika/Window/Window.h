@@ -27,6 +27,7 @@ namespace Nika
 		bool isVSync() const override;
 
 		void toggleCursor();
+		void toggleWindowScreen();
 
 	private:
 		virtual void init(const WindowProps& props);

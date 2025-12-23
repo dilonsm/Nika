@@ -46,7 +46,9 @@ namespace Nika
 
 	void Window::winUpdate(float dt)
 	{
+		// window related update
 		toggleCursor();
+		toggleWindowScreen();
 
 		// camera update
 		camera.camUpdate();
@@ -89,6 +91,23 @@ namespace Nika
 				cursorOff = false;
 				break;
 			}
+		}
+	}
+
+	void Window::toggleWindowScreen()
+	{
+		static bool fullOff = true;
+		if (IsKeyPressed(KEY_F11))
+		{
+			if (fullOff)
+			{
+				ToggleFullscreen();
+				fullOff = false;
+			}
+			else
+				RestoreWindow();
+
+			fullOff = true;
 		}
 	}
 
