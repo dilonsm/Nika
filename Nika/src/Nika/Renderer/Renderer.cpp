@@ -24,6 +24,8 @@ namespace Nika
 		EndMode3D();
 
 		// ! --- 2D stuff regarding GUI needs to be drawn after 3D Mode --- !
+		DrawFPS(10, 10);
+
 		m_Gui.drawReticle();
 
 		EndDrawing();

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <raylib.h>
 
 namespace Nika
@@ -14,7 +15,6 @@ namespace Nika
 
 	private:
 		Camera3D m_Camera;
-
 	};
 }
 

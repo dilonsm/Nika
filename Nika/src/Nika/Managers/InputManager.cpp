@@ -17,7 +17,8 @@ namespace Nika
 	void InputManager::handleInput()
 	{
 		// --- keyboard input ---
-		for (int key = 0; key < 512; key++) // covers all keycodes
+		constexpr int MAX_KEYCODE = 512;
+		for (int key = 0; key < MAX_KEYCODE; key++) // covers all possible keycodes
 		{
 			if (IsKeyPressed(key))
 			{
