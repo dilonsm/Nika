@@ -3,6 +3,10 @@
 #include "WindowBase.h"
 
 #include "Nika/Events/ApplicationEvent.h"
+#include "Nika/Renderer/Renderer.h"
+#include "Nika/Renderer/GUI.h"
+
+#include <raylib.h>
 
 namespace Nika
 {

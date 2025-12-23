@@ -1,15 +1,12 @@
 #include "nkpch.h"
 #include "Window.h"
 
-#include "Nika/Renderer/Renderer.h"
-
-#include <raylib.h>
-
 namespace Nika
 {
 	static bool s_WindowInitialized = false; // false by default to ensure only one window initialization
 
 	Camera camera; // camera instance
+	Renderer renderer; // renderer instance
 
 	WindowBase* WindowBase::createWin(const WindowProps& props)
 	{
@@ -55,7 +52,7 @@ namespace Nika
 		camera.camUpdate(dt);
 
 		// renderer update
-		Renderer::renderUpdate(camera);
+		renderer.renderUpdate(camera);
 
 		// end of program
 		shutdown();
