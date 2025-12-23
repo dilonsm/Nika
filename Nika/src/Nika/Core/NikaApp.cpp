@@ -12,6 +12,8 @@ namespace Nika
 	{
 		m_Window = std::unique_ptr<WindowBase>(WindowBase::createWin());
 		m_Window->setEventCallback(BIND_EVENT(NikaApp::onEvent));
+
+		InputManager::getInstance().setEventCallback(BIND_EVENT(NikaApp::onEvent));
 	}
 
 	NikaApp::~NikaApp()
@@ -20,24 +22,32 @@ namespace Nika
 
 	void NikaApp::run()
 	{
-		// initApp();
-
 		while (m_Running)
 		{
 			float deltaTime = GetFrameTime(); // returns time in seconds
 
-			m_Window->winUpdate(deltaTime);
-		}
-	}
+			InputManager::getInstance().inputUpdate(); // input update
 
-	void NikaApp::initApp()
-	{
+			m_Window->winUpdate(deltaTime); // window update
+		}
 	}
 
 	void NikaApp::onEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT(NikaApp::onWindowClose));
+
+		dispatcher.Dispatch<KeyPressedEvent>([this](KeyPressedEvent& e) {
+			return this->onKeyPressed(e);
+			});
+
+		dispatcher.Dispatch<KeyReleasedEvent>([this](KeyReleasedEvent& e) {
+			return this->onKeyReleased(e);
+			});
+
+		dispatcher.Dispatch<MouseMovedEvent>([this](MouseMovedEvent& e) {
+			return false;
+			});
 
 		NIKA_INFO("{0}", e.ToString());
 	}

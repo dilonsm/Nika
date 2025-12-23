@@ -3,6 +3,8 @@
 #include "Nika/Window/Window.h"
 #include "Nika/Events/ApplicationEvent.h"
 
+#include "Nika/Managers/InputManager.h"
+
 namespace Nika
 {
 	class NIKA_API NikaApp
@@ -16,9 +18,9 @@ namespace Nika
 		void onEvent(Event& e);
 
 	private:
-		void initApp();
-
 		bool onWindowClose(WindowCloseEvent& e);
+		bool onKeyPressed(KeyPressedEvent& e) { return false; }
+		bool onKeyReleased(KeyReleasedEvent& e) { return false; }
 
 		std::unique_ptr<WindowBase> m_Window;
 		bool m_Running = true;
