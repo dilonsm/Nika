@@ -49,7 +49,7 @@ namespace Nika
 		toggleCursor();
 
 		// camera update
-		camera.camUpdate(dt);
+		camera.camUpdate();
 
 		// renderer update
 		renderer.renderUpdate(camera);

@@ -12,7 +12,7 @@ namespace Nika
 		m_Camera.projection = CAMERA_PERSPECTIVE;
 	}
 
-	void Camera::camUpdate(float dt)
+	void Camera::camUpdate()
 	{
 		UpdateCamera(&m_Camera, CAMERA_FREE);
 	}

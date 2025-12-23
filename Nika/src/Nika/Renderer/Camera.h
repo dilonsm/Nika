@@ -8,7 +8,7 @@ namespace Nika
 	public:
 		Camera();
 
-		void camUpdate(float dt);
+		void camUpdate();
 
 		Camera3D& getRaylibCamera() { return m_Camera; }
 
