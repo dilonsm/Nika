@@ -3,9 +3,6 @@
 
 namespace Nika
 {
-	Camera camera; // camera instance
-	Renderer renderer; // renderer instance
-
 	std::unique_ptr<WindowBase> WindowBase::createWin(const WindowProps& props)
 	{
 		return std::make_unique<Window>(props);
@@ -38,19 +35,11 @@ namespace Nika
 			NIKA_ERROR("Window initialization failed!");
 	}
 
-	void Window::winUpdate(float dt)
+	void Window::winUpdate()
 	{
 		// window related update
-		toggleWindowScreen();
+		toggleScreen();
 		toggleCursor();
-
-		// camera update
-		camera.camUpdate();
-
-		// renderer update
-		renderer.renderUpdate(camera);
-
-		// end of program
 		shutdown();
 	}
 
@@ -88,7 +77,7 @@ namespace Nika
 		}
 	}
 
-	void Window::toggleWindowScreen()
+	void Window::toggleScreen()
 	{
 		if (IsKeyPressed(KEY_F11))
 		{
@@ -113,8 +102,6 @@ namespace Nika
 	{
 		if (WindowShouldClose())
 		{
-			CloseWindow();
-
 			WindowCloseEvent event;
 			m_Data.EventCallback(event);
 		}

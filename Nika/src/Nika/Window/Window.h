@@ -3,7 +3,6 @@
 #include "WindowBase.h"
 
 #include "Nika/Events/ApplicationEvent.h"
-#include "Nika/Renderer/Renderer.h"
 
 #include <raylib.h>
 
@@ -15,7 +14,7 @@ namespace Nika
 		Window(const WindowProps& props);
 		virtual ~Window();
 
-		void winUpdate(float dt) override;
+		void winUpdate() override;
 
 		uint32_t getWidth() const override { return m_Data.Width; }
 		uint32_t getHeight() const override { return m_Data.Height; }
@@ -26,7 +25,7 @@ namespace Nika
 		bool isVSync() const override;
 
 		void toggleCursor();
-		void toggleWindowScreen();
+		void toggleScreen();
 
 	private:
 		virtual void init(const WindowProps& props);
