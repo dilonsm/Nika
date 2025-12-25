@@ -8,12 +8,15 @@ namespace Nika
 	class Renderer
 	{
 	public:
-		void renderUpdate(Camera& camera);
+		Renderer(Camera& cam, GUI& gui);
+
+		void renderUpdate();
 
 	private:
 		void drawScene();
 
-		GUI m_Gui;
+		Camera& m_Camera;
+		GUI& m_Gui;
 	};
 }
 

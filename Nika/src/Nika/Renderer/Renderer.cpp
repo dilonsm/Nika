@@ -3,6 +3,11 @@
 
 namespace Nika
 {
+	Renderer::Renderer(Camera& cam, GUI& gui)
+		:m_Camera(cam), m_Gui(gui)
+	{
+	}
+
 	// --- RENDERING AND DRAWING ---
 	void Renderer::drawScene()
 	{
@@ -12,12 +17,15 @@ namespace Nika
 	}
 
 	// --- UPDATE ---
-	void Renderer::renderUpdate(Camera& camera)
+	void Renderer::renderUpdate()
 	{
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 
-		BeginMode3D(camera.getRaylibCamera());
+		BeginMode3D(m_Camera.getRaylibCamera());
+
+		// --- camera update ---
+		m_Camera.camUpdate();
 
 		drawScene();
 

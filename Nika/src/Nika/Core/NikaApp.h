@@ -2,7 +2,7 @@
 
 #include "Nika/Window/Window.h"
 #include "Nika/Events/ApplicationEvent.h"
-
+#include "Nika/Renderer/Renderer.h"
 #include "Nika/Managers/InputManager.h"
 
 namespace Nika
@@ -19,13 +19,15 @@ namespace Nika
 
 	private:
 		bool onWindowClose(WindowCloseEvent& e);
-		bool onWindowResize(WindowResizeEvent& e);
+
+		bool m_Running   = true;
 
 	private:
 		std::unique_ptr<WindowBase> m_Window;
 
-		bool m_Running = true;
-		bool m_Minimized = true;
+		Camera   m_Camera;
+		GUI		 m_Gui;
+		Renderer m_Renderer;
 	};
 
 	std::unique_ptr<NikaApp>(createApplication());

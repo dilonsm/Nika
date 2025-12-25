@@ -9,6 +9,7 @@
 namespace Nika
 {
 	NikaApp::NikaApp()
+		:m_Camera(), m_Gui(), m_Renderer(m_Camera, m_Gui)
 	{
 		m_Window = std::unique_ptr<WindowBase>(WindowBase::createWin());
 		m_Window->setEventCallback(BIND_EVENT(NikaApp::onEvent));
@@ -26,17 +27,21 @@ namespace Nika
 		{
 			float deltaTime = GetFrameTime(); // returns time in seconds
 
-			m_Window->winUpdate(deltaTime); // window update
+			m_Window->winUpdate(); // window update
+
+			m_Renderer.renderUpdate(); // render update
 
 			InputManager::getInstance().inputUpdate(); // input update
 		}
+
+		// window close on !m_Running
+		CloseWindow();
 	}
 
 	void NikaApp::onEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT(NikaApp::onWindowClose));
-		dispatcher.dispatch<WindowResizeEvent>(BIND_EVENT(NikaApp::onWindowResize));
 
 		NIKA_DEBUG("{0}", e.toString());
 	}
@@ -46,11 +51,6 @@ namespace Nika
 		m_Running = false;
 
 		return true;
-	}
-
-	bool NikaApp::onWindowResize(WindowResizeEvent& e)
-	{
-		return false;
 	}
 }
 
