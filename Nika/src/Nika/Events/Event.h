@@ -1,7 +1,5 @@
 #pragma once
 
-#include "nkpch.h"
-
 namespace Nika
 {
 	enum class EventType

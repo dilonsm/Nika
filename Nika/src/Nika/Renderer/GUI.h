@@ -12,8 +12,8 @@ namespace Nika
 	private:
 		struct ScreenSize
 		{
-			uint32_t Width;
-			uint32_t Height;
+			uint32_t Width  = 0;
+			uint32_t Height = 0;
 		};
 
 		ScreenSize m_Size;
