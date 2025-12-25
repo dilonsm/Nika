@@ -23,25 +23,13 @@ namespace Nika
 			if (IsKeyPressed(key))
 			{
 				KeyPressedEvent e(key, 0);
-
-				if (m_EventCallback)
-					m_EventCallback(e);
-			}
-
-			if (IsKeyDown(key))
-			{
-				KeyPressedEvent e(key, 0);
-
-				if (m_EventCallback)
-					m_EventCallback(e);
+				m_EventCallback(e);
 			}
 
 			if (IsKeyReleased(key))
 			{
 				KeyReleasedEvent e(key);
-
-				if (m_EventCallback)
-					m_EventCallback(e);
+				m_EventCallback(e);
 			}
 		}
 
@@ -51,8 +39,7 @@ namespace Nika
 		if (mousePos.x != m_LastMousePos.x || mousePos.y != m_LastMousePos.y)
 		{
 			MouseMovedEvent e(mousePos.x, mousePos.y);
-			if (m_EventCallback)
-				m_EventCallback(e);
+			m_EventCallback(e);
 
 			m_LastMousePos = mousePos;
 		}
