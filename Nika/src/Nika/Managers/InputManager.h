@@ -18,13 +18,6 @@ namespace Nika
 
 		void setEventCallback(const EventCallbackFn& callback) { m_EventCallback = callback; }
 
-		bool isKeyPressed(int key) const;
-		bool isKeyReleased(int key) const;
-		bool isMouseButtonPressed(int button) const { return IsMouseButtonPressed(button); }
-		bool isMouseButtonReleased(int button) const { return IsMouseButtonReleased(button); }
-
-		Vector2 getMousePosition() const { return GetMousePosition(); }
-
 	private:
 		InputManager() = default;
 		~InputManager() = default;

@@ -28,6 +28,14 @@ namespace Nika
 					m_EventCallback(e);
 			}
 
+			if (IsKeyDown(key))
+			{
+				KeyPressedEvent e(key, 0);
+
+				if (m_EventCallback)
+					m_EventCallback(e);
+			}
+
 			if (IsKeyReleased(key))
 			{
 				KeyReleasedEvent e(key);
@@ -48,16 +56,6 @@ namespace Nika
 
 			m_LastMousePos = mousePos;
 		}
-	}
-
-	bool InputManager::isKeyPressed(int key) const
-	{
-		return IsKeyPressed(key);
-	}
-
-	bool InputManager::isKeyReleased(int key) const
-	{
-		return IsKeyReleased(key);
 	}
 }
 

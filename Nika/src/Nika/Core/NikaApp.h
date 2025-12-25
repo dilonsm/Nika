@@ -18,12 +18,16 @@ namespace Nika
 		void onEvent(Event& e);
 
 	private:
-		bool onWindowClose(WindowCloseEvent& e);
-		bool onKeyPressed(KeyPressedEvent& e) { return false; }
-		bool onKeyReleased(KeyReleasedEvent& e) { return false; }
+		static NikaApp* s_Instance;
 
+		bool onWindowClose(WindowCloseEvent& e);
+		bool onWindowResize(WindowResizeEvent& e);
+
+	private:
 		std::unique_ptr<WindowBase> m_Window;
+
 		bool m_Running = true;
+		bool m_Minimized = true;
 	};
 
 	NikaApp* createApplication();

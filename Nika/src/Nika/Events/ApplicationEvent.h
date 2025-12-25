@@ -11,10 +11,10 @@ namespace Nika
 			: m_Width(width), m_Height(height) {
 		}
 
-		inline uint32_t GetWidth() const { return m_Width; }
-		inline uint32_t GetHeight() const { return m_Height; }
+		inline uint32_t getWidth() const { return m_Width; }
+		inline uint32_t getHeight() const { return m_Height; }
 
-		std::string ToString() const override
+		std::string toString() const override
 		{
 			std::stringstream ss;
 			ss << "WindowResizeEvent: " << m_Width << ", " << m_Height;
@@ -34,15 +34,6 @@ namespace Nika
 		WindowCloseEvent() {}
 
 		EVENT_CLASS_TYPE(WindowClose)
-			EVENT_CLASS_CATEGORY(EventCategoryApplication)
-	};
-
-	class NIKA_API AppUpdateEvent : public Event
-	{
-	public:
-		AppUpdateEvent() {}
-
-		EVENT_CLASS_TYPE(AppUpdate)
 			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 }

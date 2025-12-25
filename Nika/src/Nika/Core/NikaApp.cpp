@@ -35,21 +35,9 @@ namespace Nika
 	void NikaApp::onEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
-		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT(NikaApp::onWindowClose));
+		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT(NikaApp::onWindowClose));
 
-		dispatcher.Dispatch<KeyPressedEvent>([this](KeyPressedEvent& e) {
-			return this->onKeyPressed(e);
-			});
-
-		dispatcher.Dispatch<KeyReleasedEvent>([this](KeyReleasedEvent& e) {
-			return this->onKeyReleased(e);
-			});
-
-		dispatcher.Dispatch<MouseMovedEvent>([this](MouseMovedEvent& e) {
-			return false;
-			});
-
-		NIKA_INFO("{0}", e.ToString());
+		NIKA_DEBUG("{0}", e.toString());
 	}
 
 	bool NikaApp::onWindowClose(WindowCloseEvent& e)
@@ -57,6 +45,11 @@ namespace Nika
 		m_Running = false;
 
 		return true;
+	}
+
+	bool NikaApp::onWindowResize(WindowResizeEvent& e)
+	{
+		return false;
 	}
 }
 

@@ -66,7 +66,7 @@ project "Nika"
 		}
 
 	filter "configurations:Debug"
-		defines "NIKA_DEBUG"
+		defines "DEBUG_MODE"
 		symbols "On"
 		runtime "Debug"
 
@@ -117,7 +117,7 @@ project "Sandbox"
 		buildoptions { "/utf-8" }
 
 	filter "configurations:Debug"
-		defines "NIKA_DEBUG"
+		defines "DEBUG_MODE"
 		symbols "On"
 		runtime "Debug"
 
