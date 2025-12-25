@@ -35,7 +35,7 @@ namespace Nika
 		virtual void setVSync(bool enabled) = 0;
 		virtual bool isVSync() const = 0;
 
-		static WindowBase* createWin(const WindowProps& props = WindowProps());
+		static std::unique_ptr<WindowBase>(createWin(const WindowProps& props = WindowProps()));
 	};
 }
 

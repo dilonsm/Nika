@@ -1,23 +1,23 @@
 #include "nkpch.h"
 #include "Nika.h"
 
-class Sandbox : public Nika::NikaApp
+namespace Nika
 {
-public:
-	Sandbox()
+	class Sandbox : public NikaApp
 	{
-	}
+	public:
+		Sandbox()
+		{
+		}
 
-	~Sandbox()
+		~Sandbox()
+		{
+		}
+	};
+
+	std::unique_ptr<NikaApp>(createApplication())
 	{
+		return std::make_unique<Sandbox>();
 	}
-
-private:
-
-};
-
-Nika::NikaApp* Nika::createApplication()
-{
-	return new Sandbox();
 }
 

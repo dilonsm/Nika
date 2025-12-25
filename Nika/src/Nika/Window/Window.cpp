@@ -3,14 +3,12 @@
 
 namespace Nika
 {
-	static bool s_WindowInitialized = false; // false by default to ensure only one window initialization
-
 	Camera camera; // camera instance
 	Renderer renderer; // renderer instance
 
-	WindowBase* WindowBase::createWin(const WindowProps& props)
+	std::unique_ptr<WindowBase> WindowBase::createWin(const WindowProps& props)
 	{
-		return new Window(props);
+		return std::make_unique<Window>(props);
 	}
 
 	Window::Window(const WindowProps& props)
@@ -28,15 +26,13 @@ namespace Nika
 		m_Data.Width  = props.Width;
 		m_Data.Height = props.Height;
 
-		if (!s_WindowInitialized)
+		if (!IsWindowReady())
 		{
 			InitWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.c_str());
 			DisableCursor(); // disabled by default
 			setVSync(true);
 
 			NIKA_INFO("Created Window [{0}]: [{1}], [{2}]", props.Title, props.Width, props.Height);
-
-			s_WindowInitialized = true;
 		}
 		else
 			NIKA_ERROR("Window initialization failed!");
@@ -45,8 +41,8 @@ namespace Nika
 	void Window::winUpdate(float dt)
 	{
 		// window related update
-		toggleCursor();
 		toggleWindowScreen();
+		toggleCursor();
 
 		// camera update
 		camera.camUpdate();

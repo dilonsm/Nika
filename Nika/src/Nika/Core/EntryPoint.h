@@ -2,7 +2,7 @@
 
 #ifdef NIKA_WIN32
 
-extern Nika::NikaApp* Nika::createApplication();
+extern std::unique_ptr<Nika::NikaApp>(Nika::createApplication());
 
 // ---- Entry Point ---------------------------------
 int main(int argc, char** argv)
@@ -13,7 +13,6 @@ int main(int argc, char** argv)
 
 	auto app = Nika::createApplication();
 	app->run();
-	delete app;
 
 	return 0;
 }

@@ -26,9 +26,9 @@ namespace Nika
 		{
 			float deltaTime = GetFrameTime(); // returns time in seconds
 
-			InputManager::getInstance().inputUpdate(); // input update
-
 			m_Window->winUpdate(deltaTime); // window update
+
+			InputManager::getInstance().inputUpdate(); // input update
 		}
 	}
 
@@ -36,6 +36,7 @@ namespace Nika
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT(NikaApp::onWindowClose));
+		dispatcher.dispatch<WindowResizeEvent>(BIND_EVENT(NikaApp::onWindowResize));
 
 		NIKA_DEBUG("{0}", e.toString());
 	}
