@@ -24,3 +24,5 @@ Rename it to 'premake5.lua' and move it to Nika/Nika/vendor/raylib.
 
 **4) Open the solution file and build the project**
 
+***You will need to build it twice at the first time!***
+
