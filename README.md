@@ -5,7 +5,7 @@ Inspired by TheCherno, from the Hazel Engine series.
 ### About
 'Nika' is a work in progress Game Engine which is being written in C++.
 
-If you want to try it, you need Visual Studio.
+If you want to try it, you will need Visual Studio.
 
 **1) Clone it via terminal.**
 
@@ -15,9 +15,9 @@ git clone https://github.com/dilonsm/Nika.git
 
 **2) Download latest premake binary and put it in vendor.**
 
-[Premake](https://premake.github.io/download/)
+Download Page --->[Premake](https://premake.github.io/download/)
 
-There is a 'RAYpremake5.lua' file in the vendor folder.
+There is a 'RAYpremake5.lua' file in the vendor folder.\
 Rename it to 'premake5.lua' and move it to Nika/vendor/raylib.
 
 **3) Run the .bat script to generate the project.**
