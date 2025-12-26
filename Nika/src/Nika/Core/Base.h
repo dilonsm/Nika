@@ -1,5 +1,8 @@
 #pragma once
 
+#include <raylib.h>
+#include <raymath.h>
+
 // --- dll export/import macros ---
 #ifdef NIKA_WIN32
 	#ifdef NIKA_BUILD_DLL

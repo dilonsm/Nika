@@ -3,8 +3,6 @@
 #include "Nika/Events/MouseEvent.h"
 #include "Nika/Events/KeyEvent.h"
 
-#include <raylib.h>
-
 namespace Nika
 {
 	class InputManager
