@@ -13,12 +13,12 @@ If you want to try it, you will need Visual Studio.
 git clone --recursive https://github.com/dilonsm/Nika.git
 ```
 
-**2) Download latest premake binary and put it in vendor.**
+**2) Download latest premake binary and put it in Nika/vendor/premake.**
 
 Download Page --->[Premake](https://premake.github.io/download/)
 
-There is a 'RAYpremake5.lua' file in the vendor folder.\
-Rename it to 'premake5.lua' and move it to Nika/vendor/raylib.
+There is a 'RAYpremake5.lua' file in the premake folder. \
+Rename it to 'premake5.lua' and move it to Nika/Nika/vendor/raylib.
 
 **3) Run the .bat script to generate the project.**
 
