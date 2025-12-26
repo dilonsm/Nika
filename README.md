@@ -10,7 +10,7 @@ If you want to try it, you will need Visual Studio.
 **1) Clone it via terminal.**
 
 ```
-git clone https://github.com/dilonsm/Nika.git
+git clone --recursive https://github.com/dilonsm/Nika.git
 ```
 
 **2) Download latest premake binary and put it in vendor.**
