@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Camera.h"
+#include "Nika/Managers/CameraManager.h"
 #include "GUI.h"
 
 namespace Nika
@@ -8,14 +8,14 @@ namespace Nika
 	class Renderer
 	{
 	public:
-		Renderer(Camera& cam, GUI& gui);
+		Renderer(CameraManager& cam, GUI& gui);
 
 		void renderUpdate();
 
 	private:
 		void drawScene();
 
-		Camera& m_Camera;
+		CameraManager& m_CamManager;
 		GUI& m_Gui;
 	};
 }

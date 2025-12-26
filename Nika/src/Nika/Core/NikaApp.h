@@ -4,6 +4,7 @@
 #include "Nika/Events/ApplicationEvent.h"
 #include "Nika/Renderer/Renderer.h"
 #include "Nika/Managers/InputManager.h"
+#include "Nika/GameObjects/Player.h"
 
 namespace Nika
 {
@@ -20,14 +21,15 @@ namespace Nika
 	private:
 		bool onWindowClose(WindowCloseEvent& e);
 
-		bool m_Running   = true;
+		bool m_Running = true;
 
 	private:
 		std::unique_ptr<WindowBase> m_Window;
 
-		Camera   m_Camera;
-		GUI		 m_Gui;
-		Renderer m_Renderer;
+		Player			m_Player;
+		CameraManager	m_CamManager;
+		GUI				m_Gui;
+		Renderer		m_Renderer;
 	};
 
 	std::unique_ptr<NikaApp>(createApplication());

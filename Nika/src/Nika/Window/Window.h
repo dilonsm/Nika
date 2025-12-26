@@ -1,10 +1,7 @@
 #pragma once
 
 #include "WindowBase.h"
-
 #include "Nika/Events/ApplicationEvent.h"
-
-#include <raylib.h>
 
 namespace Nika
 {

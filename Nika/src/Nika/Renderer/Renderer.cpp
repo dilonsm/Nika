@@ -3,8 +3,8 @@
 
 namespace Nika
 {
-	Renderer::Renderer(Camera& cam, GUI& gui)
-		:m_Camera(cam), m_Gui(gui)
+	Renderer::Renderer(CameraManager& cam, GUI& gui)
+		:m_CamManager(cam), m_Gui(gui)
 	{
 	}
 
@@ -22,10 +22,13 @@ namespace Nika
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 
-		BeginMode3D(m_Camera.getRaylibCamera());
+		BeginMode3D(m_CamManager.getPlayerCamera());
+		// BeginMode3D(m_CamManager.getWorldCamera());
 
+		// --- choose a camera by removing comments. ---
 		// --- camera update ---
-		m_Camera.camUpdate();
+		m_CamManager.updatePlayerCamera(); 
+		// m_CamManager.updateWorldCamera();
 
 		drawScene();
 
