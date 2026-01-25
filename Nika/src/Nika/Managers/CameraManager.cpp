@@ -9,12 +9,6 @@ namespace Nika
 		setPlayerCamera();
 	}
 
-	// --- set camera position at player position ---
-	void CameraManager::setPosition(Vector3 pos)
-	{
-		m_PlayerPosition = pos;
-	}
-
 	void CameraManager::updateWorldCamera()
 	{
 		UpdateCamera(&m_WorldCamera, CAMERA_FREE);
@@ -22,7 +16,7 @@ namespace Nika
 
 	void CameraManager::updatePlayerCamera()
 	{
-		UpdateCamera(&m_PlayerCamera, CAMERA_FIRST_PERSON);
+		// --- empty for now ---
 	}
 
 	void CameraManager::setWorldCamera()
@@ -36,8 +30,8 @@ namespace Nika
 
 	void CameraManager::setPlayerCamera()
 	{
-		m_PlayerCamera.position		= m_PlayerPosition;
-		m_PlayerCamera.target		= { 0.0f, 1.0f, 0.0f };
+		m_PlayerCamera.position		= { 0.0f, 0.0f, 0.0f };
+		m_PlayerCamera.target		= { 0.0f, 0.0f, 0.0f };
 		m_PlayerCamera.up			= { 0.0f, 1.0f, 0.0f };
 		m_PlayerCamera.fovy			= 69.0f;
 		m_PlayerCamera.projection	= CAMERA_PERSPECTIVE;
