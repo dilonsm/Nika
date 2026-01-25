@@ -9,32 +9,35 @@ namespace Nika
 	}
 
 	// --- RENDERING AND DRAWING ---
-	void Renderer::drawScene()
+	void Renderer::drawScene(Player& player)
 	{
+		Vector3 playerPos = player.getPosition();
+
+		Vector3 cubeOffset = { 0.0f, 0.5f, 0.0f }; // --- cube is 1,1,1 big and origin is in the middle ---
+		DrawCube((playerPos + cubeOffset), 1.0f, 1.0f, 1.0f, RED);
+
 		DrawPlane(Vector3{ 0.0f, 0.0f, 0.0f }, Vector2{ 10.0f, 10.0f }, LIGHTGRAY);
 		DrawCube(Vector3{ 0.0f, 0.5f, 0.0f }, 1.0f, 1.0f, 1.0f, RED);
-		DrawCubeWires(Vector3{ 0.0f, 0.5f, 0.0f }, 1.0f, 1.0f, 1.0f, MAROON);
 	}
 
 	// --- UPDATE ---
-	void Renderer::renderUpdate()
+	void Renderer::renderUpdate(Player& player)
 	{
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 
-		BeginMode3D(m_CamManager.getPlayerCamera());
-		// BeginMode3D(m_CamManager.getWorldCamera());
+		// --- choose a camera by removing comments ---
 
-		// --- choose a camera by removing comments. ---
-		// --- camera update ---
-		m_CamManager.updatePlayerCamera(); 
-		// m_CamManager.updateWorldCamera();
+			BeginMode3D(m_CamManager.getPlayerCamera());
 
-		drawScene();
+			// BeginMode3D(m_CamManager.getWorldCamera());
+			// m_CamManager.updateWorldCamera();
 
-		EndMode3D();
+			drawScene(player);
 
-		// ! --- 2D stuff regarding GUI needs to be drawn after 3D Mode --- !
+			EndMode3D();
+
+		// --- 2D stuff regarding GUI needs to be drawn after this comment ---
 		DrawFPS(10, 10);
 
 		m_Gui.drawReticle();

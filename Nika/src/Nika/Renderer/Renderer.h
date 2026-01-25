@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Nika/Managers/CameraManager.h"
+#include "Nika/GameObjects/Player.h"
 #include "GUI.h"
 
 namespace Nika
@@ -10,10 +11,10 @@ namespace Nika
 	public:
 		Renderer(CameraManager& cam, GUI& gui);
 
-		void renderUpdate();
+		void renderUpdate(Player& player);
 
 	private:
-		void drawScene();
+		void drawScene(Player& player);
 
 		CameraManager& m_CamManager;
 		GUI& m_Gui;

@@ -7,8 +7,6 @@ namespace Nika
 	public:
 		CameraManager();
 
-		void setPosition(Vector3 pos);
-
 		void updateWorldCamera();
 		void updatePlayerCamera();
 
@@ -21,8 +19,6 @@ namespace Nika
 	private:
 		Camera3D m_WorldCamera;
 		Camera3D m_PlayerCamera;
-
-		Vector3 m_PlayerPosition{ 1, 1, 1 };
 	};
 }
 

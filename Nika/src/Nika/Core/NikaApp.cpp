@@ -12,6 +12,8 @@ namespace Nika
 		m_Window = std::unique_ptr<WindowBase>(WindowBase::createWin());
 		m_Window->setEventCallback(BIND_EVENT(NikaApp::onEvent));
 
+		m_Player.initPlayer(m_Player.getPosition(), m_CamManager);
+
 		InputManager::getInstance().setEventCallback(BIND_EVENT(NikaApp::onEvent));
 	}
 
@@ -23,13 +25,15 @@ namespace Nika
 	{
 		while (m_Running)
 		{
-			float deltaTime = GetFrameTime(); // returns time in seconds
+			float deltaTime = GetFrameTime(); // returns time in seconds for last frame drawn
 
 			m_Window->winUpdate(); // window update
 
-			m_Renderer.renderUpdate(); // render update
-
 			InputManager::getInstance().inputUpdate(); // input update
+
+			m_Player.updatePlayer(deltaTime);
+
+			m_Renderer.renderUpdate(m_Player); // render update
 		}
 
 		// window close on !m_Running
