@@ -31,7 +31,10 @@ namespace Nika
 
 			InputManager::getInstance().inputUpdate(); // input update
 
-			m_Player.updatePlayer(deltaTime);
+			if (m_CamManager.isPlayerMode()) // checks camera mode
+			{
+				m_Player.updatePlayer(deltaTime);
+			}
 
 			m_Renderer.renderUpdate(m_Player); // render update
 		}

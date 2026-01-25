@@ -11,10 +11,13 @@ namespace Nika
 	// --- RENDERING AND DRAWING ---
 	void Renderer::drawScene(Player& player)
 	{
-		Vector3 playerPos = player.getPosition();
+		if (m_CamManager.isPlayerMode())
+		{
+			Vector3 playerPos = player.getPosition();
 
-		Vector3 cubeOffset = { 0.0f, 0.5f, 0.0f }; // --- cube is 1,1,1 big and origin is in the middle ---
-		DrawCube((playerPos + cubeOffset), 1.0f, 1.0f, 1.0f, RED);
+			Vector3 cubeOffset = { 0.0f, 0.5f, 0.0f }; // --- cube is 1,1,1 big and origin is in the middle ---
+			DrawCube((playerPos + cubeOffset), 1.0f, 1.0f, 1.0f, RED);
+		}
 
 		DrawPlane(Vector3{ 0.0f, 0.0f, 0.0f }, Vector2{ 10.0f, 10.0f }, LIGHTGRAY);
 		DrawCube(Vector3{ 0.0f, 0.5f, 0.0f }, 1.0f, 1.0f, 1.0f, RED);
@@ -26,12 +29,15 @@ namespace Nika
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
 
-		// --- choose a camera by removing comments ---
-
-			BeginMode3D(m_CamManager.getPlayerCamera());
-
-			// BeginMode3D(m_CamManager.getWorldCamera());
-			// m_CamManager.updateWorldCamera();
+			if (m_CamManager.isPlayerMode())
+			{
+				BeginMode3D(m_CamManager.getPlayerCamera());
+			}
+			else
+			{
+				BeginMode3D(m_CamManager.getWorldCamera());
+				m_CamManager.updateWorldCamera();
+			}
 
 			drawScene(player);
 

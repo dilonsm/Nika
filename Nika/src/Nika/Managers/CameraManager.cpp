@@ -5,21 +5,11 @@ namespace Nika
 {
 	CameraManager::CameraManager()
 	{
-		setWorldCamera();
-		setPlayerCamera();
+		initWorldCamera();
+		initPlayerCamera();
 	}
 
-	void CameraManager::updateWorldCamera()
-	{
-		UpdateCamera(&m_WorldCamera, CAMERA_FREE);
-	}
-
-	void CameraManager::updatePlayerCamera()
-	{
-		// --- empty for now ---
-	}
-
-	void CameraManager::setWorldCamera()
+	void CameraManager::initWorldCamera()
 	{
 		m_WorldCamera.position		= { 1.0f, 1.0f, 1.0f };
 		m_WorldCamera.target		= { 0.0f, 0.0f, 0.0f };
@@ -28,13 +18,18 @@ namespace Nika
 		m_WorldCamera.projection	= CAMERA_PERSPECTIVE;
 	}
 
-	void CameraManager::setPlayerCamera()
+	void CameraManager::initPlayerCamera()
 	{
 		m_PlayerCamera.position		= { 0.0f, 0.0f, 0.0f };
 		m_PlayerCamera.target		= { 0.0f, 0.0f, 0.0f };
 		m_PlayerCamera.up			= { 0.0f, 1.0f, 0.0f };
 		m_PlayerCamera.fovy			= 69.0f;
 		m_PlayerCamera.projection	= CAMERA_PERSPECTIVE;
+	}
+
+	void CameraManager::updateWorldCamera()
+	{
+		UpdateCamera(&m_WorldCamera, CAMERA_FREE);
 	}
 }
 
