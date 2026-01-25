@@ -5,7 +5,7 @@ Inspired by TheCherno, from the Hazel Engine series.
 ### About
 'Nika' is a work in progress Game Engine which is being written in C++.
 
-If you want to try it, you will need Visual Studio.
+To try it out, u need an IDE of your choice that supports .sln files.
 
 **1) Clone it via terminal.**
 
@@ -15,7 +15,7 @@ git clone --recursive https://github.com/dilonsm/Nika.git
 
 **2) Download latest premake binary and put it in Nika/vendor/premake.**
 
-Download Page --->[Premake](https://premake.github.io/download/)
+**Download Page --->[Premake](https://premake.github.io/download/)**
 
 There is a 'RAYpremake5.lua' file in the premake folder. \
 Rename it to 'premake5.lua' and move it to Nika/Nika/vendor/raylib.
@@ -24,5 +24,8 @@ Rename it to 'premake5.lua' and move it to Nika/Nika/vendor/raylib.
 
 **4) Open the solution file and build the project**
 
-***You will need to build it twice at the first time!***
+***It may take two or three tries to build!***
+
+**When building the solution, raylib is compiled first, followed by Nika and then Sandbox.** \
+**My assumption is that the Nika.dll is created before the Sandbox bin folder exists, so copying it there may fail but i'm on it.**
 
