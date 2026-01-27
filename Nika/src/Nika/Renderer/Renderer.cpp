@@ -13,10 +13,7 @@ namespace Nika
 	{
 		if (m_CamManager.isPlayerMode())
 		{
-			Vector3 playerPos = player.getPosition();
-
-			Vector3 cubeOffset = { 0.0f, 0.5f, 0.0f }; // --- cube is 1,1,1 big and origin is in the middle ---
-			DrawCube((playerPos + cubeOffset), 1.0f, 1.0f, 1.0f, RED);
+			drawPlayer(player);
 		}
 
 		DrawPlane(Vector3{ 0.0f, 0.0f, 0.0f }, Vector2{ 10.0f, 10.0f }, LIGHTGRAY);
@@ -49,6 +46,14 @@ namespace Nika
 		m_Gui.drawReticle();
 
 		EndDrawing();
+	}
+
+	void Renderer::drawPlayer(Player& player)
+	{
+		Vector3 playerPos = player.getPosition();
+
+		Vector3 cubeOffset = { 0.0f, 0.5f, 0.0f }; // --- cube is 1,1,1 and the origin is in the middle ---
+		DrawCube((playerPos + cubeOffset), 1.0f, 1.0f, 1.0f, RED);
 	}
 }
 

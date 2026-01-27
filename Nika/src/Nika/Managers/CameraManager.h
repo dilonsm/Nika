@@ -31,8 +31,8 @@ namespace Nika
 		Camera3D m_PlayerCamera;
 
 		// --- choose a camera by replacing comments ---
-		CamMode m_Mode = CamMode::World;
-		//CamMode m_Mode = CamMode::Player;
+		//CamMode m_Mode = CamMode::World;
+		CamMode m_Mode = CamMode::Player;
 	};
 }
 

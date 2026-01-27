@@ -14,6 +14,7 @@ namespace Nika
 		void renderUpdate(Player& player);
 
 	private:
+		void drawPlayer(Player& player);
 		void drawScene(Player& player);
 
 		CameraManager& m_CamManager;
