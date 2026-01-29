@@ -3,25 +3,21 @@
 
 namespace Nika
 {
-	Renderer::Renderer(CameraManager& cam, GUI& gui)
-		:m_CamManager(cam), m_Gui(gui)
+	Renderer::Renderer(CameraManager& cam, GUI& gui, Player& player)
+		:m_CamManager(cam), m_Gui(gui), m_Player(player)
 	{
+		m_Player.initPlayer(m_Player.getPosition(), m_CamManager);
 	}
 
 	// --- RENDERING AND DRAWING ---
-	void Renderer::drawScene(Player& player)
+	void Renderer::drawScene()
 	{
-		if (m_CamManager.isPlayerMode())
-		{
-			drawPlayer(player);
-		}
-
 		DrawPlane(Vector3{ 0.0f, 0.0f, 0.0f }, Vector2{ 10.0f, 10.0f }, LIGHTGRAY);
 		DrawCube(Vector3{ 0.0f, 0.5f, 0.0f }, 1.0f, 1.0f, 1.0f, RED);
 	}
 
 	// --- UPDATE ---
-	void Renderer::renderUpdate(Player& player)
+	void Renderer::renderUpdate(float dt)
 	{
 		BeginDrawing();
 		ClearBackground(RAYWHITE);
@@ -29,6 +25,9 @@ namespace Nika
 			if (m_CamManager.isPlayerMode())
 			{
 				BeginMode3D(m_CamManager.getPlayerCamera());
+				
+				drawPlayer();
+				m_Player.updatePlayer(dt);
 			}
 			else
 			{
@@ -36,7 +35,7 @@ namespace Nika
 				m_CamManager.updateWorldCamera();
 			}
 
-			drawScene(player);
+			drawScene();
 
 			EndMode3D();
 
@@ -48,9 +47,9 @@ namespace Nika
 		EndDrawing();
 	}
 
-	void Renderer::drawPlayer(Player& player)
+	void Renderer::drawPlayer()
 	{
-		Vector3 playerPos = player.getPosition();
+		Vector3 playerPos = m_Player.getPosition();
 
 		Vector3 cubeOffset = { 0.0f, 0.5f, 0.0f }; // --- cube is 1,1,1 and the origin is in the middle ---
 		DrawCube((playerPos + cubeOffset), 1.0f, 1.0f, 1.0f, RED);
