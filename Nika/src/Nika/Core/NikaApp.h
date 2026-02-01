@@ -2,7 +2,7 @@
 
 #include "Nika/Window/Window.h"
 #include "Nika/Events/ApplicationEvent.h"
-#include "Nika/Renderer/Renderer.h"
+#include "Nika/Graphics/Renderer.h"
 #include "Nika/Managers/InputManager.h"
 #include "Nika/GameObjects/Player.h"
 
