@@ -5,9 +5,9 @@ namespace Nika
 {
 	void Player::initPlayer(Vector3 pos, CameraManager& camMan)
 	{
-		m_PlayerData.Position = pos;
-		m_PlayerData.Yaw   = 0.0f;
-		m_PlayerData.Pitch = 0.0f;
+		setPosition(pos);
+		setYaw(0.0f);
+		setPitch(0.0f);
 
 		m_CamManager = &camMan;
 	}
@@ -24,11 +24,11 @@ namespace Nika
 		Vector2 mouseDelta = GetMouseDelta();
 		const float sensitivity = 0.003f;
 
-		m_PlayerData.Yaw   -= mouseDelta.x * sensitivity;
-		m_PlayerData.Pitch -= mouseDelta.y * sensitivity;
+		m_Yaw   -= mouseDelta.x * sensitivity;
+		m_Pitch -= mouseDelta.y * sensitivity;
 
 		// pitch clamp to avoid flipping the camera
-		m_PlayerData.Pitch = Clamp(m_PlayerData.Pitch, -1.5f, 1.5f);
+		m_Pitch = Clamp(m_Pitch, -1.5f, 1.5f);
 	}
 
 	void Player::updateMovement(float dt)
@@ -49,14 +49,14 @@ namespace Nika
 		input.y /= length;
 
 		Vector3 forward = {
-			sinf(m_PlayerData.Yaw),
+			sinf(m_Yaw),
 			0.0f,
-			cosf(m_PlayerData.Yaw)
+			cosf(m_Yaw)
 		};
 		Vector3 right = {
-			cosf(m_PlayerData.Yaw),
+			cosf(m_Yaw),
 			0.0f,
-			-sinf(m_PlayerData.Yaw)
+			-sinf(m_Yaw)
 		};
 
 		Vector3 moveDir = {
@@ -65,8 +65,8 @@ namespace Nika
 			right.z * input.x + forward.z * input.y
 		};
 
-		m_PlayerData.Position.x += moveDir.x * m_PlayerData.Speed * dt;
-		m_PlayerData.Position.z += moveDir.z * m_PlayerData.Speed * dt;
+		m_Position.x += moveDir.x * m_Speed * dt;
+		m_Position.z += moveDir.z * m_Speed * dt;
 	}
 
 	void Player::updateCamera()
@@ -76,13 +76,13 @@ namespace Nika
 		// “head” offset (height of eyes above character origin)
 		const Vector3 headOffset = { 0.0f, 1.8f, 0.0f };
 
-		cam.position = Vector3Add(m_PlayerData.Position, headOffset);
+		cam.position = Vector3Add(m_Position, headOffset);
 
 		// compute forward vector from yaw + pitch
 		Vector3 forward = {
-			cosf(m_PlayerData.Pitch) * sinf(m_PlayerData.Yaw),
-			sinf(m_PlayerData.Pitch),
-			cosf(m_PlayerData.Pitch) * cosf(m_PlayerData.Yaw)
+			cosf(m_Pitch) * sinf(m_Yaw),
+			sinf(m_Pitch),
+			cosf(m_Pitch) * cosf(m_Yaw)
 		};
 
 		cam.target = Vector3Add(cam.position, forward);
