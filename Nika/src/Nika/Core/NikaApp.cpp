@@ -7,12 +7,10 @@
 namespace Nika
 {
 	NikaApp::NikaApp()
-		:m_CamManager(), m_Gui(), m_Renderer(m_CamManager, m_Gui)
+		:m_CamManager(), m_Gui(), m_Renderer(m_CamManager, m_Gui, m_Player)
 	{
 		m_Window = std::unique_ptr<WindowBase>(WindowBase::createWin());
 		m_Window->setEventCallback(BIND_EVENT(NikaApp::onEvent));
-
-		m_Player.initPlayer(m_Player.getPosition(), m_CamManager);
 
 		InputManager::getInstance().setEventCallback(BIND_EVENT(NikaApp::onEvent));
 	}
@@ -31,12 +29,7 @@ namespace Nika
 
 			InputManager::getInstance().inputUpdate(); // input update
 
-			if (m_CamManager.isPlayerMode()) // checks camera mode
-			{
-				m_Player.updatePlayer(deltaTime);
-			}
-
-			m_Renderer.renderUpdate(m_Player); // render update
+			m_Renderer.renderUpdate(deltaTime); // render update
 		}
 
 		// window close on !m_Running
