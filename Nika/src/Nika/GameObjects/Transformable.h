@@ -23,7 +23,7 @@ namespace Nika
 
     protected:
         Vector3 m_Position { 0.0f, 0.0f, 0.0f };
-        float   m_Yaw = 0.0f;
+        float   m_Yaw   = 0.0f;
         float   m_Pitch = 0.0f;
     };
 }

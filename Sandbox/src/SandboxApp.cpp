@@ -1,18 +1,15 @@
 #include "nkpch.h"
-#include "Nika.h"
+
+#include "Nika/Core/NikaApp.h"
+#include "Nika/Core/EntryPoint.h"
 
 namespace Nika
 {
 	class Sandbox : public NikaApp
 	{
 	public:
-		Sandbox()
-		{
-		}
-
-		~Sandbox()
-		{
-		}
+		 Sandbox() {}
+		~Sandbox() {}
 	};
 
 	std::unique_ptr<NikaApp>(createApplication())

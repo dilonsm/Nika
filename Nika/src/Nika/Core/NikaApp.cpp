@@ -7,7 +7,7 @@
 namespace Nika
 {
 	NikaApp::NikaApp()
-		:m_CamManager(), m_Gui(), m_Renderer(m_CamManager, m_Gui, m_Player)
+		:m_Renderer(m_CamManager, m_Gui, m_Player)
 	{
 		m_Window = std::unique_ptr<WindowBase>(WindowBase::createWin());
 		m_Window->setEventCallback(BIND_EVENT(NikaApp::onEvent));

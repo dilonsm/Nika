@@ -2,7 +2,7 @@
 
 #include "Nika/Managers/CameraManager.h"
 #include "Nika/GameObjects/Player.h"
-#include "GUI.h"
+#include "Nika/Graphics/GUI.h"
 
 namespace Nika
 {
@@ -17,9 +17,9 @@ namespace Nika
 		void drawPlayer();
 		void drawScene();
 
-		Player& m_Player;
 		CameraManager& m_CamManager;
-		GUI& m_Gui;
+		GUI&	m_Gui;
+		Player& m_Player;
 	};
 }
 

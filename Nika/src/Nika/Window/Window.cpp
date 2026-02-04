@@ -48,7 +48,7 @@ namespace Nika
 		m_Data.VSync = enabled;
 
 		if (enabled)
-			SetTargetFPS(60);
+			SetTargetFPS(144);
 		else
 			SetTargetFPS(0);
 	}

@@ -5,6 +5,8 @@
 
 namespace Nika
 {
+	constexpr int MAX_KEYCODE = 512; // covers all possible keycodes
+
 	class InputManager
 	{
 	public:
@@ -17,7 +19,7 @@ namespace Nika
 		void setEventCallback(const EventCallbackFn& callback) { m_EventCallback = callback; }
 
 	private:
-		InputManager() = default;
+		 InputManager() = default;
 		~InputManager() = default;
 
 		void handleInput();

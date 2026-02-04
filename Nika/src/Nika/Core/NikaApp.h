@@ -1,10 +1,8 @@
 #pragma once
 
 #include "Nika/Window/Window.h"
-#include "Nika/Events/ApplicationEvent.h"
 #include "Nika/Graphics/Renderer.h"
 #include "Nika/Managers/InputManager.h"
-#include "Nika/GameObjects/Player.h"
 
 namespace Nika
 {
@@ -27,8 +25,8 @@ namespace Nika
 		std::unique_ptr<WindowBase> m_Window;
 
 		Player			m_Player;
-		CameraManager	m_CamManager;
 		GUI				m_Gui;
+		CameraManager	m_CamManager;
 		Renderer		m_Renderer;
 	};
 
