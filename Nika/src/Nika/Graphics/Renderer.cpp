@@ -13,7 +13,17 @@ namespace Nika
 	void Renderer::drawScene()
 	{
 		DrawPlane(Vector3{ 0.0f, 0.0f, 0.0f }, Vector2{ 10.0f, 10.0f }, LIGHTGRAY);
-		DrawCube(Vector3{ 0.0f, 0.5f, 0.0f }, 1.0f, 1.0f, 1.0f, RED);
+		DrawCube(Vector3{ 3.0f, 0.5f, 0.0f }, 1.0f, 1.0f, 1.0f, RED);
+
+		// bbox around second cube in scene
+		BoundingBox cubeBox = {
+			{  2.5f, 0.0f, -0.5f },
+			{  3.5f, 1.0f,  0.5f }
+		};
+		DrawBoundingBox(cubeBox, BLUE);
+
+		// added cube as collider
+		CollisionManager::getInstance().addCollider(cubeBox);
 	}
 
 	// --- UPDATE ---
@@ -26,7 +36,8 @@ namespace Nika
 			{
 				BeginMode3D(m_CamManager.getPlayerCamera());
 				
-				drawPlayer();
+				DrawBoundingBox(m_Player.getBoundingBox(), GREEN); // box around player
+				drawPlayer(); // draw player cube
 				m_Player.updatePlayer(dt);
 			}
 			else
