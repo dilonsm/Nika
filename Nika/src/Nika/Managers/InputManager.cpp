@@ -33,7 +33,7 @@ namespace Nika
 		}
 
 		// --- mouse input ---
-		Vector2 mousePos = GetMousePosition();
+		static Vector2 mousePos = GetMousePosition();
 
 		if (mousePos.x != m_LastMousePos.x || mousePos.y != m_LastMousePos.y)
 		{
@@ -42,6 +42,31 @@ namespace Nika
 
 			m_LastMousePos = mousePos;
 		}
+
+		// left mousebutton check
+		if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+		{
+			MouseButtonPressedEvent e(MOUSE_BUTTON_LEFT);
+			m_EventCallback(e);
+		}
+		else if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+		{
+			MouseButtonPressedEvent e(MOUSE_BUTTON_RIGHT);
+			m_EventCallback(e);
+		}
+
+		// right mousebutton check
+		if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT))
+		{
+			MouseButtonReleasedEvent e(MOUSE_BUTTON_LEFT);
+			m_EventCallback(e);
+		}
+		else if (IsMouseButtonReleased(MOUSE_BUTTON_RIGHT))
+		{
+			MouseButtonReleasedEvent e(MOUSE_BUTTON_RIGHT);
+			m_EventCallback(e);
+		}
+
 	}
 }
 
