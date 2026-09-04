@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Nika/GameObjects/Transformable.h"
+#include "Nika/Managers/CollisionManager.h"
 #include "Nika/Managers/CameraManager.h"
 
 namespace Nika
@@ -10,6 +11,9 @@ namespace Nika
 	public:
 		void initPlayer(Vector3 pos, CameraManager& manager);
 		void updatePlayer(float dt);
+
+		BoundingBox getBoundingBox() const;
+		BoundingBox getBoundingBoxAtPosition(Vector3 pos) const;
 
 	private:
 		void updateRotation();

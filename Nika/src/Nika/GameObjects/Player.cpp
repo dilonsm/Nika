@@ -3,6 +3,7 @@
 
 namespace Nika
 {
+	// player initialization
 	void Player::initPlayer(Vector3 pos, CameraManager& camMan)
 	{
 		setPosition(pos);
@@ -12,6 +13,7 @@ namespace Nika
 		m_CamManager = &camMan;
 	}
 
+	// player update
 	void Player::updatePlayer(float dt)
 	{
 		updateRotation();
@@ -19,6 +21,29 @@ namespace Nika
 		updateCamera();
 	}
 
+	// collision update
+	BoundingBox Player::getBoundingBox() const
+	{
+		return getBoundingBoxAtPosition(m_Position);
+	}
+
+	BoundingBox Player::getBoundingBoxAtPosition(Vector3 position) const
+	{
+		return {
+			{
+				position.x - 0.5f,
+				position.y,
+				position.z - 0.5f
+			},
+			{
+				position.x + 0.5f,
+				position.y + 1.0f,
+				position.z + 0.5f
+			}
+		};
+	}
+
+	// rotation update
 	void Player::updateRotation()
 	{
 		Vector2 mouseDelta = GetMouseDelta();
@@ -31,6 +56,7 @@ namespace Nika
 		m_Pitch = Clamp(m_Pitch, -1.5f, 1.5f);
 	}
 
+	// movement update
 	void Player::updateMovement(float dt)
 	{
 		Vector2 input = { 0.0f, 0.0f };
@@ -59,14 +85,32 @@ namespace Nika
 			-sinf(m_Yaw)
 		};
 
+		// calculating movement direction
 		Vector3 moveDir = {
 			right.x * input.x + forward.x * input.y,
 			0.0f,
 			right.z * input.x + forward.z * input.y
 		};
 
-		m_Position.x += moveDir.x * m_Speed * dt;
-		m_Position.z += moveDir.z * m_Speed * dt;
+		// collision manager instance
+		CollisionManager& collision = CollisionManager::getInstance();
+
+		Vector3 desiredPos = m_Position;
+
+		// collision in X direction
+		desiredPos.x += moveDir.x * m_Speed * dt;
+		if (!collision.checkCollision(getBoundingBoxAtPosition(desiredPos)))
+		{
+			m_Position.x = desiredPos.x;
+		}
+
+		// collision in Z direction
+		desiredPos = m_Position;
+		desiredPos.z += moveDir.z * m_Speed * dt;
+		if (!collision.checkCollision(getBoundingBoxAtPosition(desiredPos)))
+		{
+			m_Position.z = desiredPos.z;
+		}
 	}
 
 	void Player::updateCamera()
