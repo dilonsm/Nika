@@ -17,9 +17,10 @@ git clone --recursive https://github.com/dilonsm/Nika.git
 
 
 - Put the premake binary in *Nika/vendor/premake*
-[Screenshot](../../screeny.png)
 - There is a 'RAYpremake5.lua' file in the premake folder.
 - Rename it to 'premake5.lua' and move it to *Nika/Nika/vendor/raylib.*
+
+![image alt](https://github.com/dilonsm/Nika/blob/6b5aa8880521c921c85907711a6b178710b52de3/vendor/screeny.png)
 
 **3) Run the .bat script to generate the project.**
 
