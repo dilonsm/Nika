@@ -26,8 +26,3 @@ git clone --recursive https://github.com/dilonsm/Nika.git
 
 **4) Open the solution file and build the project**
 
-***It takes two to three tries to build!***
-
-**When building the solution, raylib is compiled first, followed by Nika and then Sandbox.** \
-**I think that the Nika.dll is created before the Sandbox bin folder exists, so copying it there may fail.**
-
