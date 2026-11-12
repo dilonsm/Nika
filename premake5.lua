@@ -62,7 +62,8 @@ project "Nika"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			'if not exist "$(SolutionDir)bin\\' .. outputdir .. '\\Sandbox" mkdir "$(SolutionDir)bin\\' .. outputdir .. '\\Sandbox"',
+			'copy /Y "$(TargetPath)" "$(SolutionDir)bin\\' .. outputdir .. '\\Sandbox\\"'
 		}
 
 	filter "configurations:Debug"
